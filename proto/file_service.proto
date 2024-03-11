@@ -1,0 +1,21 @@
+/*
+ * File sharing service
+ */
+
+syntax = "proto3";
+
+package sha.zone.file_service;
+
+message FileRequest {}
+message FileUpsertRequest {}
+message FileResponse {}
+message ServiceResponse {}
+
+service FileService {
+  // Upsert, encrypt and save a file
+  rpc Upsert(stream FileUpsertRequest) returns (ServiceResponse) {}
+  // Delete a file
+  rpc Delete(FileRequest) returns (ServiceResponse) {}
+  // Retrieve a preview of the defined file
+  rpc Preview(FileRequest) returns  (stream FileResponse) {}
+}

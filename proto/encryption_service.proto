@@ -1,0 +1,19 @@
+/*
+ * File encryption service
+ */
+
+syntax = "proto3";
+
+package sha.zone.encryption_service;
+
+message EncryptedFileResponse {}
+message EncryptionRequest {}
+message DecryptionRequest {}
+message DecryptedFileResponse {}
+
+service EncryptionService {
+  // Encrypt a file using given method
+  rpc Encrypt(stream EncryptionRequest) returns (stream EncryptedFileResponse) {}
+  // Decrypt a file using given method
+  rpc Decrypt(DecryptionRequest) returns (stream DecryptedFileResponse) {}
+}
