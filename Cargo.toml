@@ -20,7 +20,7 @@ thiserror = "1.0"
 tonic = { version = "0.11"}
 tonic-web = { version = "0.11" }
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
-tokio-stream = { version = "0.1", optional = true }
+tokio-stream = "0.1"
 tokio-util = { version = "0.7", optional = true }
 tower = { version = "0.4", optional = true }
 rand = { version = "0.8", optional = true }
