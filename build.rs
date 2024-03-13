@@ -10,12 +10,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .file_descriptor_set_path(out_dir.join("sha_zone.bin"))
         .compile(
             &[
-                "proto/encryption_service.proto",
-                "proto/file_service.proto",
-                "proto/storage_service.proto",
                 "proto/authentication_service.proto",
+                "proto/file_service.proto",
+                "proto/transition_service.proto",
             ],
-            &["proto"])
+            &["proto"],
+        )
         .unwrap();
 
     Ok(())

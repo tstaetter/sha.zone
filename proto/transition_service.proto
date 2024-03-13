@@ -1,0 +1,15 @@
+/*
+ * File transition service
+ */
+
+syntax = "proto3";
+
+package sha.zone.transition_service;
+
+message TransitRequest {}
+message TransitTokenResponse {}
+
+service TransitionService {
+  // Retrieve transit token for securely transfer files
+  rpc TransitToken(TransitRequest) returns (TransitTokenResponse) {}
+}
