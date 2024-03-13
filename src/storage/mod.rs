@@ -1,3 +1,3 @@
 mod surreal;
 
-pub use surreal::connection;
+pub trait Storage {}
