@@ -1,3 +1,6 @@
+mod grpc;
+mod token;
+
 ///
 /// Main entry point for SurrealDB backed server
 ///

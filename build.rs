@@ -13,6 +13,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "proto/encryption_service.proto",
                 "proto/file_service.proto",
                 "proto/storage_service.proto",
+                "proto/authentication_service.proto",
             ],
             &["proto"])
         .unwrap();

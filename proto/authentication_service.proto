@@ -1,0 +1,21 @@
+/*
+ * Authentication service
+ */
+
+syntax = "proto3";
+
+package sha.zone.authentication_service;
+
+message RegisterRequest {}
+message TokenResponse {}
+message LoginRequest {}
+message TokenRequest {}
+
+service AuthenticationService {
+  // Register a new account
+  rpc Register(RegisterRequest) returns (TokenResponse) {}
+  // Login to an existing account
+  rpc Login(LoginRequest) returns (TokenResponse) {}
+  // Validate given token
+  rpc Validate(TokenRequest) returns (TokenResponse) {}
+}
