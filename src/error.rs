@@ -9,6 +9,10 @@ pub enum ShaError {
     AddrParse(#[from] std::net::AddrParseError),
     #[error("Tonic transport error: {0}")]
     TonicTransport(#[from] tonic::transport::Error),
+    #[error("Error handling token: {0}")]
+    JwtToken(#[from] jwt::Error),
+    #[error("Error reading encryption key: {0}")]
+    Sha2(#[from] sha2::digest::InvalidLength),
 }
 
 pub type ShaResult<T> = Result<T, ShaError>;
