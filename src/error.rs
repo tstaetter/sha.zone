@@ -9,6 +9,8 @@ pub enum ShaError {
     AddrParse(#[from] std::net::AddrParseError),
     #[error("Tonic transport error: {0}")]
     TonicTransport(#[from] tonic::transport::Error),
+    #[error("Tonic metadata error: {0}")]
+    TonicMetadata(#[from] tonic::metadata::errors::ToStrError),
     #[error("Error handling token: {0}")]
     JwtToken(#[from] jwt::Error),
     #[error("Error reading encryption key: {0}")]

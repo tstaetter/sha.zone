@@ -5,6 +5,8 @@ use jwt::{AlgorithmType, Header, SignWithKey, Token, VerifyWithKey};
 use jwt::token::Signed;
 use sha2::Sha384;
 use serde_derive::{Deserialize, Serialize};
+use tonic::{Request, Status};
+use tonic::metadata::MetadataValue;
 use crate::error::ShaResult;
 
 /// All supported token types
@@ -37,10 +39,17 @@ pub fn create(_ty: TokenType, _claim: JwtClaim) -> ShaResult<Token<Header, JwtCl
     Ok(token)
 }
 
+pub fn request_verification(req: Request<()>) -> Result<Request<()>, Status> {
+    match req.metadata().get("authorization") {
+        Some(token) if verify(token.to_str()?).unwrap_or(false) => Ok(req),
+        _ => Err(Status::unauthenticated("No valid auth token")),
+    }
+}
+
 /// Verify token represented by its token string
-pub fn verify(token_str: String) -> ShaResult<bool> {
+pub fn verify(token_str: &str) -> ShaResult<bool> {
     let key: Hmac<Sha384> = Hmac::new_from_slice(std::env::var("JWT_SECRET")?.as_bytes())?;
-    let token: Token<Header, JwtClaim, _> = VerifyWithKey::verify_with_key(token_str.as_str(), &key)?;
+    let token: Token<Header, JwtClaim, _> = VerifyWithKey::verify_with_key(token_str, &key)?;
     let header = token.header();
     let claims = token.claims();
     let ref_claim = JwtClaim::default();
