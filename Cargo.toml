@@ -3,5 +3,6 @@
 members = [
     "api",
     "transmission",
+    "sha-zone-protobuf",
 ]
 resolver = "2"

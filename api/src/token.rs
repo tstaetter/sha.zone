@@ -16,8 +16,6 @@ pub enum TokenType {
     FileRequest,
     /// Used for refreshing UserTokens
     Refresh,
-    /// Used while uploading files
-    Transition,
     /// Common JWT token for user identification
     User,
 }

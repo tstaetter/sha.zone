@@ -6,7 +6,9 @@ syntax = "proto3";
 
 package sha.zone.file_service;
 
-message FileRequest {}
+message FileRequest {
+  string name = 1;
+}
 message FileUpsertRequest {}
 message FileResponse {}
 message ServiceResponse {}

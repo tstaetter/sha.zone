@@ -9,11 +9,6 @@ use tracing::info;
 use crate::error::ShaResult;
 use crate::grpc::grpc_server;
 
-pub mod protobuf {
-    tonic::include_proto!("sha.zone.authentication_service");
-    tonic::include_proto!("sha.zone.file_service");
-}
-
 ///
 /// Main entry point for server
 ///

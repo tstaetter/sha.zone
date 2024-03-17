@@ -1,5 +1,5 @@
 use tonic::{Request, Response, Status};
-use crate::protobuf::{authentication_service_server, LoginRequest, RegisterRequest, TokenRequest, TokenResponse};
+use sha_zone_protobuf::protobuf::{authentication_service_server, LoginRequest, RegisterRequest, TokenRequest, TokenResponse};
 
 #[derive(Default)]
 pub struct AuthenticationServer {}

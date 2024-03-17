@@ -3,8 +3,8 @@ use tonic::transport::{Server};
 use crate::error::ShaResult;
 use crate::grpc::authentication_service::AuthenticationServer;
 use crate::grpc::file_service::FileServer;
-use crate::protobuf::file_service_server::FileServiceServer;
-use crate::protobuf::authentication_service_server::AuthenticationServiceServer;
+use sha_zone_protobuf::protobuf::file_service_server::FileServiceServer;
+use sha_zone_protobuf::protobuf::authentication_service_server::AuthenticationServiceServer;
 use crate::token::request_verification;
 
 /// Register all services to a gRPC server and return it to

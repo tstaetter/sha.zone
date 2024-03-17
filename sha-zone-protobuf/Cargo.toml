@@ -1,0 +1,18 @@
+[package]
+name = "sha-zone-protobuf"
+version = "0.1.0"
+edition = "2021"
+authors = ["Thomas Stätter <thomas.staetter@secureflowlabs.com>"]
+resolver = "2"
+
+[dependencies]
+prost = "0.12"
+prost-types = "0.12"
+tonic = { version = "0.11"}
+tonic-web = { version = "0.11" }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+tokio-stream = "0.1"
+
+[build-dependencies]
+dotenv = "0.15"
+tonic-build = { version = "0.11", features = ["prost"] }

@@ -1,7 +1,8 @@
 use std::pin::Pin;
 use tokio_stream::Stream;
 use tonic::{Request, Response, Status, Streaming};
-use crate::protobuf::{file_service_server, FileRequest, FileResponse, FileUpsertRequest, ServiceResponse};
+use sha_zone_protobuf::protobuf::{file_service_server, FileRequest, FileResponse, FileUpsertRequest, ServiceResponse};
+
 
 #[derive(Default)]
 pub struct FileServer {}
