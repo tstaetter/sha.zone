@@ -6,6 +6,7 @@ use jwt::token::Signed;
 use sha2::Sha384;
 use serde_derive::{Deserialize, Serialize};
 use tonic::{Request, Status};
+use tracing::error;
 use crate::error::ShaResult;
 
 /// All supported token types
@@ -40,7 +41,7 @@ pub fn create(_ty: TokenType, _claim: JwtClaim) -> ShaResult<Token<Header, JwtCl
 
 pub fn request_verification(req: Request<()>) -> Result<Request<()>, Status> {
     match req.metadata().get("authorization") {
-        Some(token) if verify(token.to_str()?).unwrap_or(false) => Ok(req),
+        Some(token) if verify(token.to_str().unwrap_or("")).unwrap_or(false) => Ok(req),
         _ => Err(Status::unauthenticated("No valid auth token")),
     }
 }
