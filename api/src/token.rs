@@ -6,7 +6,6 @@ use jwt::token::Signed;
 use sha2::Sha384;
 use serde_derive::{Deserialize, Serialize};
 use tonic::{Request, Status};
-use tonic::metadata::MetadataValue;
 use crate::error::ShaResult;
 
 /// All supported token types
